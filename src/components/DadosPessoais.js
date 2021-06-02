@@ -1,9 +1,7 @@
 import React from 'react';
 import DadosProfissionais from './DadosProfissionais'
-// import Consolidacao from './Consolidacao'
 import { connect } from 'react-redux'
 import { dadosPessoaisAction } from '../actions/dadosPessoaisActions'
-// import emailAction from '../actions/dadosPessoaisActions'
 
 const states = [
   'AC - Acre',

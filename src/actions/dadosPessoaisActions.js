@@ -1,7 +1,1 @@
 export const dadosPessoaisAction = (formImput) =>({ type: 'UPDATE_DADOS', payload: formImput })
-// export const emailAction = (formImput) =>({ type: 'EMAIL', payload: formImput })
-// export const cpfAction = (formImput) =>({ type: 'CPF', payload: formImput })
-// export const enderecoAction = (formImput) =>({ type: 'ENDEREÇO', payload: formImput })
-// export const cidadeAction = (formImput) =>({ type: 'CIDADE', payload: formImput })
-// export const estadoAction = (formImput) =>({ type: 'ESTADO', payload: formImput })
-// export const tipoAction = (formImput) =>({ type: 'TIPO', payload: formImput })
