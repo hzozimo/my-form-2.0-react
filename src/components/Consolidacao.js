@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 
 class Consolidacao extends React.Component {
    mostraConsolidacao = () => {
@@ -8,7 +10,9 @@ class Consolidacao extends React.Component {
     }
     
     render() {  
-      const  {nome, email, cpf, endereço, cidade, estado, tipo, resumo, cargo, descricaoDoCargo} = this.props.dados;
+      const { dados } = this.props;
+      console.log(dados);
+      const  { nome, email, cpf, endereço, cidade, estado, tipo, resumo, cargo, descricaoDoCargo } = dados;
     return (
     <div >
       <button onClick={this.mostraConsolidacao}> Consolidar </button>
@@ -26,4 +30,8 @@ class Consolidacao extends React.Component {
   }
 }
 
-export default Consolidacao;
+const mapStateToProps = (state) => ({
+  dados: state.dadosPessoais.dadosState,
+});
+
+export default connect(mapStateToProps)(Consolidacao);

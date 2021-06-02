@@ -1,7 +1,9 @@
 import React from 'react';
 import DadosProfissionais from './DadosProfissionais'
-import Consolidacao from './Consolidacao'
+// import Consolidacao from './Consolidacao'
 import { connect } from 'react-redux'
+import { dadosPessoaisAction } from '../actions/dadosPessoaisActions'
+// import emailAction from '../actions/dadosPessoaisActions'
 
 const states = [
   'AC - Acre',
@@ -37,9 +39,22 @@ class DadosPessoais extends React.Component {
   constructor () {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      nome: '',
+      email:'',
+      cpf: '',
+      endereço: '',
+      cidade: '',
+      estado:'',
+      tipo: '',
+      resumo:'',
+      cargo: '',
+      descricaoDoCargo:'',
+    }
     
   }
 handleChange({ target }) {
+      const { dadosText } = this.props;
       let { name , type, checked, value } = target;
       let entry = type === 'checkbox' ? checked : value;
 
@@ -51,10 +66,11 @@ handleChange({ target }) {
       this.setState({
         [name]: entry,
       });
-
+      dadosText(this.state);
 
     }
     nomeCidade = ({ target }) => {
+      const { dadosText } = this.props;
       let { name, value } = target;
       if ((value[0] <= '9') && (value[0] >= '0')) {
         value = '';        
@@ -63,6 +79,7 @@ handleChange({ target }) {
           [name]: '',
         });
       }
+      dadosText(this.state);
     }
 
     limparFormulario = () =>{
@@ -107,7 +124,6 @@ handleChange({ target }) {
         </label>
       </fieldset>
       <DadosProfissionais handleChange={this.handleChange}/>
-      <Consolidacao dados={this.state}/>
       <button onClick={this.limparFormulario}> Limpar Formulário </button>
       </div>
     );
@@ -115,7 +131,7 @@ handleChange({ target }) {
 }
 
 const mapDispatchToProps =(dispatch) =>({
-  dadosPessoais: (state) => dispatch(newAction(state))
+  dadosText: (formText) => dispatch(dadosPessoaisAction(formText)),
 })
 
-export default connect(null, mapDispatchToProps)(DadosPessoais)
+export default connect(null, mapDispatchToProps)(DadosPessoais);
