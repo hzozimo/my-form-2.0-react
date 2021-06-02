@@ -12,9 +12,11 @@ const INITIAL_STATE =  {
   descricaoDoCargo:'',}
 }
 
+const updateDados = 'UPDATE_DADOS'
+
 const dadosPessoaisReducer = (state = INITIAL_STATE, action) =>{
   switch(action.type){
-    case 'UPDATE_DADOS' :
+    case updateDados :
       console.log('aqui')
       return {dadosState: action.payload};  
     default:
